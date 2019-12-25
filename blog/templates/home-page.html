@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+    	<div class="post container">
+    		<span class="post-authon post-date">
+    			By <a href="#">
+    				{{ post.author }}
+    				</a>
+    				  -  
+    				 <small>
+    				 	{{ post.date|date:'F d, Y' }}
+    				 </small>
+    		</span>
+    		<hr/>
+	        <h1 class="post-title">
+	            {{ post.title }}
+	        </h1>
+	        <span class="post-descs">
+	            {{ post.desctiption }}
+	        </span>
+	    </div>
+    {% endfor %}
+
+
+<style type="text/css">
+    .post {
+    	height: 200px auto;
+    	background: #f0f0f0;
+    	margin-top: 20px;
+    	padding: 1em;
+    }
+</style>
+{% endblock %}

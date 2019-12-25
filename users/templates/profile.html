@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media profile-block">
+        <img class="rounded-circle account-img" 
+             src="{{ user.profile.profile_image.url }}"
+             style="height: 150px; width: 150px;">
+        <div class="media-body">
+          <h2 class="account-heading content-block">{{ user.username }}</h2>
+          <p class="text-secondary content-block">{{ user.email }}</p>
+        </div>
+      </div>
+      <form method='POST' enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class='form-group'>
+              {{ user_form|crispy }}
+              {{ profile_form|crispy }}
+          </fieldset>
+          <button class='btn btn-outline-secondary' type='submit'>
+              Update
+          </button>
+      </form>
+    </div>
+
+    <style type="text/css">
+      .content-section {
+        height: 200px auto;
+        background: #f0f0f0;
+        border: 1px solid lightgray;
+        margin-top: 20px;
+        padding: 1em;
+        -webkit-box-shadow: 0px 50px 43px -37px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 50px 43px -37px rgba(0,0,0,0.75);
+        box-shadow: 0px 50px 43px -37px rgba(0,0,0,0.75);
+      }
+
+      .content-block {
+        text-align: center;
+      }
+  </style>
+{% endblock content %}

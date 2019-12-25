@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+        <title>
+            {% if request.get_full_path == '/' %}
+                StarNavi | test project
+            {% elif request.path == '/signup/' %}
+                StarNavi | Sign-up
+            {% elif request.path == '/login/' %}
+                StarNavi | Log-in
+            {% elif request.path == '/profile/' %}
+                StarNavi | {{ user.username }}
+            {% endif %}
+        </title>
+        {% include 'links/css-links.html' %} 
+        <!-- 
+            This is used for simplification of the code. 
+            For instance, if we have plenty of links or scripts, there are will be in separate file; 
+        -->
+    </head>
+    <body>
+        {% include 'header.html' %}
+        <div class='container'>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class='alert alert-{{ message.tags }}'>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% include 'links/js-links.html' %} 
+        <!-- 
+            This is used for simplification of the code. 
+            For instance, if we have plenty of links or scripts, there are will be in separate file; 
+        -->
+    </body>
+</html>
