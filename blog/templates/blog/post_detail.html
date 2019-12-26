@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    	<div class="post container">
+    		<span class="post-authon post-date">
+				By 
+				<a href="#">
+    				{{ object.author }}
+    			</a>
+    			  -  
+    			<small>
+    				{{ object.date|date:'F d, Y' }}
+				</small>
+				{% if object.author == user %}
+					- 
+					<a href="{% url 'post-update' object.id %}">
+						Update post
+					</a>
+					| 
+					<a href="{% url 'post-delete' object.id %}">
+						Delete post
+					</a>
+				{% endif %}
+				<button class="btn btn-outline-success float-right">
+					Like 
+				</button>	
+    		</span>
+    		<hr/>
+	        <h1 class="post-title">
+	            {{ object.title }}
+	        </h1>
+	        <span class="post-descs">
+	            {{ object.desctiption }}
+			</span>
+			<br/>
+		</div>
+
+
+<style type="text/css">
+    .post {
+    	height: 200px auto;
+    	background: #f0f0f0;
+    	margin-top: 20px;
+    	padding: 1em;
+    }
+</style>
+{% endblock %}

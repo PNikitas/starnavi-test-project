@@ -27,7 +27,7 @@
 						   mt-lg-0">
 					{% if user.is_authenticated %}
 						<li class="nav-item active">
-							<a class="nav-link" href="{% url 'profile' %}">
+							<a class="nav-link" href="{% url 'profile' user.id %}">
 								Hello, {{ user.get_username }}
 							</a>
 						</li>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from blog.models import Post
 from .forms import (UserSignupForm,
                     UserUpdateForm,
                     ProfileUpdateForm,
@@ -26,7 +27,7 @@ def signup(request):
 
 
 @login_required
-def profile(request):
+def profile(request, pk):
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, 
                                    instance=request.user
@@ -39,7 +40,6 @@ def profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'You have been just already changed your account info')
-            return redirect('profile')
 
     else:
         user_form = UserUpdateForm(instance=request.user)
@@ -48,6 +48,7 @@ def profile(request):
     context = {
         'user_form': user_form,
         'profile_form': profile_form,
+        'posts': Post.objects.filter(author_id=request.user.id),
     }
 
     return render(request, 'profile.html', context)

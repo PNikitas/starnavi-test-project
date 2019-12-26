@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <h1 class="mb-3">
+        {{ view.kwargs.username }} has {{ page_obj.paginator.count }} posts
+    </h1>
     {% for post in posts %}
     	<div class="post container" style="max-height: 200px; 
 										   overflow: hidden; 
 										   text-overflow: ellipsis;">
     		<span class="post-authon post-date">
-    			By <a href="#"> 
+    			By <a href="#">
     				{{ post.author }}
     				</a>
     				  -  

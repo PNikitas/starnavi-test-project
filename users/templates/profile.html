@@ -7,8 +7,16 @@
              src="{{ user.profile.profile_image.url }}"
              style="height: 150px; width: 150px;">
         <div class="media-body">
-          <h2 class="account-heading content-block">{{ user.username }}</h2>
-          <p class="text-secondary content-block">{{ user.email }}</p>
+          <h2 class="account-heading content-block">
+            {{ user.username }}
+          </h2>
+          <p class="text-secondary content-block">
+            {{ user.email }}
+            </br></br> <!-- Only one crutch in the Front-end -->
+            <a class="btn btn-outline-secondary content-block" href="{% url 'post-create' %}">
+              Add new post
+            </a>
+          </p>
         </div>
       </div>
       <form method='POST' enctype="multipart/form-data">
@@ -17,11 +25,42 @@
               {{ user_form|crispy }}
               {{ profile_form|crispy }}
           </fieldset>
+          <a class='btn btn-outline-secondary' href="{% url 'password-reset' %}">
+            Reset the password
+          </a>
           <button class='btn btn-outline-secondary' type='submit'>
-              Update
+            Update
           </button>
       </form>
     </div>
+    
+    {% for post in posts %}
+    	<div class="post container" style="max-height: 200px; 
+										                     overflow: hidden; 
+										                     text-overflow: ellipsis;">
+    		<span class="post-authon post-date">
+          By 
+          <a href="#">
+    				{{ post.author }}
+    			</a>
+    				 -  
+    			<small>
+    				{{ post.date|date:'F d, Y' }}
+    			</small>
+    		</span>
+    		<hr/>
+	      <h1>
+          <a class="post-title" href="{% url 'post-detail' post.id %}">
+            {{ post.title }}
+          </a>
+	      </h1>
+	      <span class="post-descs">
+	        {{ post.desctiption }}
+	      </span>
+      </div>
+    {% endfor %}
+
+    <br/>
 
     <style type="text/css">
       .content-section {
@@ -37,6 +76,22 @@
 
       .content-block {
         text-align: center;
+      }
+
+      .post {
+        height: 200px auto;
+        background: #f0f0f0;
+        margin-top: 20px;
+        padding: 1em;
+      }
+  
+      .post-title {
+        color: black;
+      }
+
+      .post-title:hover {
+        color: black; 
+        text-decoration: underline; 
       }
   </style>
 {% endblock content %}
