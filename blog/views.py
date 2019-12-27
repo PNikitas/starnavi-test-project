@@ -2,11 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import authentication, permissions
 from django.views.generic import (ListView, 
                                   DetailView, 
                                   CreateView,
                                   UpdateView,
                                   DeleteView,
+                                  RedirectView,
 )
 
 
@@ -74,6 +78,50 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         post = self.get_object()
 
         return True if self.request.user == post.author else False
+
+
+class PostLikeToggle(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        post = Post.objects.get(pk=self.kwargs.get('pk'))
+        obj = get_object_or_404(Post, pk=post.id)
+        user_one = self.request.user
+
+        if user_one.is_authenticated:
+            obj.like.remove(user_one) if user_one in obj.like.all() else obj.like.add(user_one)
+        
+        return obj.get_absolute_url()
+
+
+class PostLikeAPIToggle(APIView):
+    authentication_classes = [authentication.SessionAuthentication,]
+    permission_classes = [permissions.IsAuthenticated,]
+
+    def get(self, request, pk=None, format=None):
+        post = Post.objects.get(pk=self.kwargs.get('pk'))
+        obj = get_object_or_404(Post, pk=post.id)
+        user_one = self.request.user
+        updated = liked = False
+
+        if user_one.is_authenticated:
+            if user_one in obj.like.all():
+                liked = False
+                obj.like.remove(user_one)
+            else:
+                liked = True
+                obj.like.add(user_one)
+        
+            updated = True
+
+        counts = obj.like.count()
+        
+        context = {
+            "updated": updated,
+            "liked":   liked,
+            "likescount": counts
+        }
+
+        return Response(context)
+
 
 def homePage(request):  
     return render(request, 'home-page.html', {'posts': Post.objects.all()})

@@ -12,7 +12,10 @@
     				  -  
     				 <small>
     				 	{{ post.date|date:'F d, Y' }}
-    				 </small>
+					 </small>
+					 <p class='float-right'>
+						 Total likes: {{ post.like.count }}
+					 </p>
     		</span>
     		<hr/>
 	        <h1>
