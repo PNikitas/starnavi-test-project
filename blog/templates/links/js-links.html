@@ -4,8 +4,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function() {
-        function updateText(btn, new_count, verb) {
-            btn.text(verb + ' - ' + new_count);
+        function updateText(btn, new_count, color) {
+            $('.like-btn').attr('class', color)
+            btn.text('Like - ' + new_count);
         }
 
         $('.like-btn').click(function(e) {
@@ -15,6 +16,7 @@
             var like_count = parseInt(this_.attr('data-likes'));
             var add_like = like_count + 1;
             var remove_like = like_count - 1;
+            var color = this_.attr('class');
             if (like_url){
                 $.ajax({
                     url: like_url, 
@@ -22,9 +24,9 @@
                     data: {},
                     success: function(data) {
                         if (data.liked){
-                            updateText(this_, data.likescount, 'Unlike');
+                            updateText(this_, data.likescount, 'btn btn-success float-right like-btn');
                         } else {
-                            updateText(this_, data.likescount, 'Like');
+                            updateText(this_, data.likescount, 'btn btn-outline-success float-right like-btn');
                         }
                     }
                 })

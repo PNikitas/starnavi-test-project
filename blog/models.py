@@ -25,4 +25,3 @@ class Post(models.Model):
 
 	def get_api_like_url(self):
 		return reverse('api-post-like', kwargs={'pk': self.pk})
-	

@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class='content'>
-        <form method='POST'>
+        <form id="submitForm" method='POST'>
             {% csrf_token %}
             <fieldset class='form-group'>
                 <legend class='border-bottom mb-4'>
@@ -11,10 +11,17 @@
                 {{ form|crispy }}
             </fieldset>
             <div class='form-group'>
-                <button class='btn btn-outline-secondary' type='submit'>
-                    Share
-                </button>
+                <a class='btn btn-secondary' onclick="func()">
+                    Submit
+                </a>
             </div>
         </form>
     </div>
+    <script>
+        function func() {
+            document.getElementById('submitForm').submit();
+            alert('Done!');
+            window.location.replace(document.referrer);
+        }
+    </script>
 {% endblock %}

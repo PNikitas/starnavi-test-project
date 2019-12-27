@@ -22,16 +22,19 @@
 					</a>
 				{% endif %}
 				<a href="{% url 'post-like' object.id %}"
-				   data-href="{{ object.get_api_like_url }}"
-				   data-likes="{{ object.like.count }}"
-				   class="btn btn-outline-success float-right like-btn">
-					{% if user in post.like.all %}
-						Unlike
-					{% else %} 
-						Like
-					{% endif %}
-					- {{ object.like.count }}
-				</a>	
+				data-href="{{ object.get_api_like_url }}"
+				data-likes="{{ object.like.count }}"
+				class="
+				{% if user in post.like.all %}
+					btn btn-success float-right like-btn
+				{% else %}
+					btn btn-outline-success float-right like-btn
+				{% endif %}">
+						Like - {{ object.like.count }}
+				</a>
+				<a class="post-title btn float-right" href="{% url 'post-detail' post.id %}">
+					API of this post
+				</a>
     		</span>
     		<hr/>
 	        <h1 class="post-title">
@@ -40,9 +43,8 @@
 	        <span class="post-descs">
 	            {{ object.desctiption }}
 			</span>
-			<br/>
 		</div>
-
+		<br/>
 
 <style type="text/css">
     .post {

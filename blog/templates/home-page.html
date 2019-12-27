@@ -6,7 +6,7 @@
 										   overflow: hidden; 
 										   text-overflow: ellipsis;">
     		<span class="post-authon post-date">
-    			By <a href="#"> 
+    			By <a href="#}"> 
     				{{ post.author }}
     				</a>
     				  -  
@@ -19,7 +19,7 @@
     		</span>
     		<hr/>
 	        <h1>
-				<a class="post-title" href="{% url 'post-detail' post.id %}">
+				<a class="post-title" href="http://127.0.0.1:8000/post/{{ post.id }}">
 					{{ post.title }}
 				</a>
 	        </h1>

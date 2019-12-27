@@ -1,4 +1,5 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 from .views import (PostListView, 
                     PostDetailView, 
                     PostCreateView,
@@ -6,9 +7,13 @@ from .views import (PostListView,
                     PostDeleteView,
                     PostLikeToggle,
                     PostLikeAPIToggle,
+                    PostView,
                     # UserPostListView,
 )
 
+
+router = routers.DefaultRouter()
+router.register('blog', PostView)
 
 urlpatterns = [
     path('', 
@@ -38,6 +43,10 @@ urlpatterns = [
     path('api/post/<int:pk>/like/', 
          PostLikeAPIToggle.as_view(), 
          name='api-post-like'),
+
+     # path('api/posts/', PostView.as_view({'get':'list'}))
+
+     path('api/posts/', include(router.urls)),
 
     # path('user/<str:username>/', UserPostListView.as_view(), name='user-posts'),
 ]

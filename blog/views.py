@@ -1,10 +1,14 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
+from .serializers import PostSerializer
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import authentication, permissions
+from rest_framework import (authentication, 
+                            permissions, 
+                            viewsets,
+)
 from django.views.generic import (ListView, 
                                   DetailView, 
                                   CreateView,
@@ -68,6 +72,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         post = self.get_object()
 
         return True if self.request.user == post.author else False
+    
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -121,6 +126,11 @@ class PostLikeAPIToggle(APIView):
         }
 
         return Response(context)
+
+
+class PostView(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
 
 def homePage(request):  
