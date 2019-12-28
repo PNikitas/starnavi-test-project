@@ -124,16 +124,11 @@ EMAIL_PORT = 587
 
 EMAIL_USE_TLS = True
 
-<<<<<<< HEAD
-EMAIL_HOST_USER = 'nikitapatlay@gmail.com'  # os.environ.get('EMAIL_USER')  # Put here an e-mail username
+EMAIL_HOST_USER = '' # os.environ.get('EMAIL_USER')  # Put here an e-mail username
 
-EMAIL_HOST_PASSWORD = 'asusk56cm'  # os.environ.get('EMAIL_PASS')  # Put here an e-mail password
+EMAIL_HOST_PASSWORD = '' # os.environ.get('EMAIL_PASS')  # Put here an e-mail password
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
 }
-=======
-EMAIL_HOST_USER = '' # os.environ.get('EMAIL_USER')  # Put here an e-mail username
-
-EMAIL_HOST_PASSWORD = '' # os.environ.get('EMAIL_PASS')  # Put here an e-mail password
