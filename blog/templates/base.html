@@ -12,6 +12,8 @@
                 StarNavi | Sign-up
             {% elif request.path == '/login/' %}
                 StarNavi | Log-in
+            {% elif request.path == '/logout/' %}
+                StarNavi | Log-out
             {% elif '/profile/' in request.path %}
                 StarNavi | {{ user.username }}
             {% elif '/post/' in request.path %}
@@ -20,6 +22,8 @@
                 StarNavi | Creating a new post
             {% elif '/password-reset/' in request.path or 'reset' in request.path %}
                 StarNavi | Password reset
+            {% elif '/user/' in request.path %}
+                StarNavi | User {{ view.kwargs.username }}
             {% endif %}
         </title>
         {% include 'links/css-links.html' %} 

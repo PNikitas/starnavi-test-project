@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from .models import Post
 from .serializers import PostSerializer
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -25,18 +25,16 @@ class PostListView(ListView):
     paginate_by = 5
 
 
-'''
 class UserPostListView(ListView):
     model = Post
-    template_name = 'user_posts.html'
+    template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
     paginate_by = 5
 
-    def get_query_set(self):
+    def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
 
         return Post.objects.filter(author=user)
-'''
 
 
 class PostDetailView(DetailView):

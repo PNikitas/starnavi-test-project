@@ -4,7 +4,7 @@
     	<div class="post container">
     		<span class="post-authon post-date">
 				By 
-				<a href="#">
+				<a href="{% url 'user-posts' object.author.username %}">
     				{{ object.author }}
     			</a>
     			  -  

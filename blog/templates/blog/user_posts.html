@@ -1,25 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="mb-3">
-        {{ view.kwargs.username }} has {{ page_obj.paginator.count }} posts
+    <h1 class="mb-3 requiredField">
+		{{ view.kwargs.username }} has {{ page_obj.paginator.count }} 
+		{% if page_obj.paginator.count > 1 %}
+			posts
+		{% else %}
+			post
+		{% endif %}
     </h1>
     {% for post in posts %}
     	<div class="post container" style="max-height: 200px; 
 										   overflow: hidden; 
 										   text-overflow: ellipsis;">
     		<span class="post-authon post-date">
-    			By <a href="#">
+				By 
+				<a href="{% url 'user-posts' post.author.username %}">
     				{{ post.author }}
-    				</a>
+    			</a>
     				  -  
-    				 <small>
-    				 	{{ post.date|date:'F d, Y' }}
-    				 </small>
+    			<small>
+    				{{ post.date|date:'F d, Y' }}
+				</small>
+				<p class='float-right'>
+					Total likes: {{ post.like.count }}
+				</p>
     		</span>
     		<hr/>
 	        <h1>
-				<a class="post-title" href="{% url 'post-detail' post.id %}">
+				<a class="post-title" href="http://127.0.0.1:8000/post/{{ post.id }}">
 					{{ post.title }}
 				</a>
 	        </h1>

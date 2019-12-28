@@ -6,7 +6,7 @@
 										   overflow: hidden; 
 										   text-overflow: ellipsis;">
     		<span class="post-authon post-date">
-    			By <a href="#}"> 
+    			By <a href="{% url 'user-posts' post.author.username %}"> 
     				{{ post.author }}
     				</a>
     				  -  

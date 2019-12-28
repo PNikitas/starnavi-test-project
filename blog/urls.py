@@ -8,7 +8,7 @@ from .views import (PostListView,
                     PostLikeToggle,
                     PostLikeAPIToggle,
                     PostView,
-                    # UserPostListView,
+                    UserPostListView,
 )
 
 
@@ -16,37 +16,37 @@ router = routers.DefaultRouter()
 router.register('blog', PostView)
 
 urlpatterns = [
-    path('', 
-         PostListView.as_view(), 
-         name='home-page'), 
+     path('', 
+          PostListView.as_view(), 
+          name='home-page'),
 
-    path('post/<int:pk>/', 
-         PostDetailView.as_view(), 
-         name='post-detail'),
+     path('user/<str:username>/', 
+          UserPostListView.as_view(), 
+          name='user-posts'),  
 
-    path('new-post/', 
-         PostCreateView.as_view(), 
-         name='post-create'),
+     path('post/<int:pk>/', 
+          PostDetailView.as_view(), 
+          name='post-detail'),
 
-    path('post/<int:pk>/update/', 
-         PostUpdateView.as_view(), 
-         name='post-update'),
+     path('new-post/', 
+          PostCreateView.as_view(), 
+          name='post-create'),
 
-    path('post/<int:pk>/delete/', 
-         PostDeleteView.as_view(), 
-         name='post-delete'),
+     path('post/<int:pk>/update/', 
+          PostUpdateView.as_view(), 
+          name='post-update'),
 
-    path('post/<int:pk>/like/', 
-         PostLikeToggle.as_view(), 
-         name='post-like'),
+     path('post/<int:pk>/delete/', 
+          PostDeleteView.as_view(), 
+          name='post-delete'),
 
-    path('api/post/<int:pk>/like/', 
-         PostLikeAPIToggle.as_view(), 
-         name='api-post-like'),
+     path('post/<int:pk>/like/', 
+          PostLikeToggle.as_view(), 
+          name='post-like'),
 
-     # path('api/posts/', PostView.as_view({'get':'list'}))
+     path('api/post/<int:pk>/like/', 
+          PostLikeAPIToggle.as_view(), 
+          name='api-post-like'),
 
      path('api/posts/', include(router.urls)),
-
-    # path('user/<str:username>/', UserPostListView.as_view(), name='user-posts'),
 ]

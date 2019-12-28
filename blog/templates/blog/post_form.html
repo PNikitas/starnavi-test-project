@@ -5,20 +5,20 @@
         <form id="submitForm" method='POST'>
             {% csrf_token %}
             <fieldset class='form-group'>
-                <legend class='border-bottom mb-4'>
-                    Creating a new post
+                <legend class='border-bottom mb-4 requiredField'>
+                    Post editing
                 </legend>
                 {{ form|crispy }}
             </fieldset>
             <div class='form-group'>
-                <a class='btn btn-secondary' onclick="func()">
+                <a class='btn btn-secondary' onclick='submitData()'>
                     Submit
                 </a>
             </div>
         </form>
     </div>
     <script>
-        function func() {
+        function submitData() {
             document.getElementById('submitForm').submit();
             alert('Done!');
             window.location.replace(document.referrer);

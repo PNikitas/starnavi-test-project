@@ -5,18 +5,18 @@
         <form method='POST'>
             {% csrf_token %}
             <fieldset class='form-group'>
-                <legend class='border-bottom mb-4'>
+                <legend class='border-bottom mb-4 requiredField'>
                     Delete the post?
                 </legend>
-                <h2>
+                <h2 class='requiredField'>
                     Do you really want to delete "{{ object.title }}"?
                 </h2>
             </fieldset>
             <div class='form-group'>
-                <a href='http://127.0.0.1:8000/post/{{ object.id }}' class='btn btn-outline-secondary'>
+                <a href='http://127.0.0.1:8000/post/{{ object.id }}' class='btn btn-secondary'>
                     Cancel
                 </a>
-                <button class='btn btn-outline-danger' type='submit'>
+                <button class='btn btn-danger' type='submit'>
                     Delete
                 </button>
             </div>
