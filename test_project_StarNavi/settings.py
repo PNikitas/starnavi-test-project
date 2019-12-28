@@ -137,4 +137,3 @@ REST_FRAMEWORK = {
 EMAIL_HOST_USER = '' # os.environ.get('EMAIL_USER')  # Put here an e-mail username
 
 EMAIL_HOST_PASSWORD = '' # os.environ.get('EMAIL_PASS')  # Put here an e-mail password
->>>>>>> 8ac28f9d68746f05a3affda54af8b2aa64e7745d
