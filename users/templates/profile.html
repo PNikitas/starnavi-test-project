@@ -13,7 +13,7 @@
           <p class="text-secondary content-block">
             {{ user.email }}
             </br></br> <!-- Only one crutch in the Front-end -->
-            <a class="btn btn-secondary content-block" href="{% url 'post-create' %}">
+            <a class="btn btn-secondary content-block fifth" href="{% url 'post-create' %}">
               Add new post
             </a>
           </p>
@@ -52,7 +52,7 @@
 					 </p>
     		</span>
     		<hr/>
-	      <h1>
+	      <h1 class="find-by">
           <a class="post-title" href="http://127.0.0.1:8000/post/{{ post.id }}">
             {{ post.title }}
           </a>

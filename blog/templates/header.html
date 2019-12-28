@@ -4,7 +4,7 @@
 				navbar-light 
 				bg-light
 				navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="{% url 'home-page' %}">
+		<a class="navbar-brand homePage logOut" href="{% url 'home-page' %}">
 			StarNavi | test-project
 		</a>
 	 	<button class="navbar-toggler" 
@@ -27,7 +27,7 @@
 						   mt-lg-0">
 					{% if user.is_authenticated %}
 						<li class="nav-item active">
-							<a class="nav-link" href="{% url 'profile' user.id %}">
+							<a class="nav-link fourth" href="{% url 'profile' user.id %}">
 								Hello, {{ user.get_username }}
 							</a>
 						</li>
@@ -43,7 +43,7 @@
 							</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="{% url 'signup' %}">
+							<a class="nav-link first" href="{% url 'signup' %}">
 								Sign-up 
 							</a>
 						</li>
