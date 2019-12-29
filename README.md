@@ -8,6 +8,7 @@ After installing all libraries from requirements.txt, you can use application wh
 
 Admin's username: admin
 Admin's password: admin123
+
 ---
 
 P.S. I am not sure that all of the packages in requirements.txt are needed... 
