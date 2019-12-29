@@ -36,10 +36,10 @@ def main():
         while True:
             likes_used = func.leaveLike(likes_left)
             likes_left = likes_left - likes_used
-            # if likes_left == 0:
-            #     break
-            if random.randint(0, 1) == 0 or likes_left == 0:  # In my personal opinion, the commented code above is better. Fixed number of likes :)
+            if likes_left == 0:
                 break
+            # if random.randint(0, 1) == 0 or likes_left == 0:  # In my personal opinion, the commented code above is better. Fixed number of likes :)
+            #     break
             try:
                 next_btn = func.driver.find_element_by_class_name('nextBtn')
                 next_btn.click()
