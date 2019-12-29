@@ -6,6 +6,8 @@ After installing all libraries from requirements.txt, you can use application wh
 * Write `python manage.py runserver` for running the server;
 * Launch `automated_bot.py` to let bot starts (You should run the server firstly).
 
+Admin's username: admin
+Admin's password: admin123
 ---
 
 P.S. I am not sure that all of the packages in requirements.txt are needed... 
