@@ -10,10 +10,7 @@ After installing all libraries from requirements.txt, you can use application wh
 * Admin's password: admin123
 
 ---
-<<<<<<< HEAD
 
 Added a new version of the bot: multiprocessing.
 
-* Additional: If you have a weak computer, there is a huge chance that something will be wrong with the bot. So, I would recomend you to use bot from the 20th commit, if you have a weak computer, of course. The bot in the 20th commit is consistent and the bot in the 21st commit is parallel.
-=======
->>>>>>> 86e32e528d40976e4bcd416d197b98f12bff077a
+* Additional: If you have a weak computer, there is a huge chance that something will be wrong with the bot. So, I would recomend you to use bot from the 20th commit, if you have a weak computer, of course. The bot in the 20th commit is consistent and the bot starting from the 21st (better use last commit if you want bot is parallel) commit is parallel.
