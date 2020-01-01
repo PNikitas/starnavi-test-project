@@ -13,4 +13,4 @@ After installing all libraries from requirements.txt, you can use application wh
 
 Added a new version of the bot: multiprocessing.
 
-* Additional: If you have a weak computer, there is a huge chance that something will be wrong with the bot. So, I would recomend you to use bot from the 20th commit, if you have a weak computer, of course. The bot in the 20th commit is consistent and the bot starting from the 21st (better use the last commit if you want bot is parallel) commit is parallel.
+* Additional: If you have a weak computer, there is a huge chance that something will be wrong with the bot. So, I would recommend you to use bot from the 20th commit, if you have a weak computer, of course. The bot in the 20th commit is consistent and the bot starting from the 21st (better use the last commit if you want bot is parallel) commit is parallel.
