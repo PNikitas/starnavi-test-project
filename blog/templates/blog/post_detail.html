@@ -1,48 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    	<div class="post container">
-    		<span class="post-authon post-date">
-				By 
-				<a href="{% url 'user-posts' object.author.username %}">
-    				{{ object.author }}
-    			</a>
-    			  -  
-    			<small>
-    				{{ object.date|date:'F d, Y' }}
-				</small>
-				{% if object.author == user %}
-					- 
-					<a href="{% url 'post-update' object.id %}">
-						Update post
-					</a>
-					| 
-					<a href="{% url 'post-delete' object.id %}">
-						Delete post
-					</a>
-				{% endif %}
-				<a href="{% url 'post-like' object.id %}"
-				data-href="{{ object.get_api_like_url }}"
-				data-likes="{{ object.like.count }}"
-				class="
-				{% if user in post.like.all %}
-					btn btn-success float-right like-btn
-				{% else %}
-					btn btn-outline-success float-right like-btn
-				{% endif %}">
-						Like - {{ object.like.count }}
+    <div class="post container">
+    	<span class="post-authon post-date">
+			By 
+			<a href="{% url 'user-posts' object.author.username %}">
+    			{{ object.author }} [id {{ object.author.id }}]
+    		</a>
+    		  -  
+    		<small>
+    			{{ object.date|date:'F d, Y' }}
+			</small>
+			{% if object.author == user %}
+				- 
+				<a href="{% url 'post-update' object.id %}">
+					Update post
 				</a>
-				<a class="btn float-right" href="{% url 'post-detail' post.id %}">
-					API of this post
+				| 
+				<a href="{% url 'post-delete' object.id %}">
+					Delete post
 				</a>
-    		</span>
-    		<hr/>
-	        <h1 class="post-title">
-	            {{ object.title }}
-	        </h1>
-	        <span class="post-descs">
-	            {{ object.desctiption }}
-			</span>
-		</div>
-		<br/>
+			{% endif %}
+			<a href="{% url 'post-like' object.id %}"
+			data-href="{{ object.get_api_like_url }}"
+			data-likes="{{ object.like.count }}"
+			class="
+			{% if user in post.like.all %}
+				btn btn-success float-right like-btn
+			{% else %}
+				btn btn-outline-success float-right like-btn
+			{% endif %}">
+					Like - {{ object.like.count }}
+			</a>
+			<a class="btn float-right" href="{% url 'post-detail' post.id %}?format=json">
+				API of {{ object.title }} post [id {{ object.id }}]
+			</a>
+    	</span>
+    	<hr/>
+	    <h1>
+	        {{ object.title }}
+	    </h1>
+	    <span class="post-descs">
+	        {{ object.desctiption }}
+		</span>
+	</div>
+	<br/>
 {% endblock %}

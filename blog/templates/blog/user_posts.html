@@ -4,7 +4,7 @@
     <h1 class="mb-3 requiredField">
 		{{ view.kwargs.username }} has {{ page_obj.paginator.count }} 
 		{% if page_obj.paginator.count > 1 %}
-			posts
+			posts 
 		{% else %}
 			post
 		{% endif %}
@@ -16,7 +16,7 @@
     		<span class="post-authon post-date">
 				By 
 				<a href="{% url 'user-posts' post.author.username %}">
-    				{{ post.author }}
+    				{{ post.author }} [id {{ post.author.id }}]
     			</a>
     				  -  
     			<small>
@@ -25,6 +25,9 @@
 				<p class='float-right'>
 					Total likes: {{ post.like.count }}
 				</p>
+				<a class="float-right" href="http://127.0.0.1:8000/api/posts/blog/?format=json">
+					API of all posts &nbsp;
+				</a>
     		</span>
     		<hr/>
 	        <h1>

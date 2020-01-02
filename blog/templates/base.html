@@ -24,6 +24,8 @@
                 StarNavi | Password reset
             {% elif '/user/' in request.path %}
                 StarNavi | User {{ view.kwargs.username }}
+            {% elif '/api/help/' in request.path %}
+                StarNavi | API
             {% endif %}
         </title>
         {% include 'links/css-links.html' %} 

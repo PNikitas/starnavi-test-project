@@ -25,6 +25,11 @@
 						   mr-auto 
 						   mt-2
 						   mt-lg-0">
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'api-help' %}">
+							API 
+						</a>
+					</li>
 					{% if user.is_authenticated %}
 						<li class="nav-item active">
 							<a class="nav-link fourth" href="{% url 'profile' user.id %}">

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
-from .serializers import PostSerializer
+from users.models import Profile
+from .serializers import PostSerializer, ProfileSerializer
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
@@ -131,5 +132,15 @@ class PostView(viewsets.ModelViewSet):
     serializer_class = PostSerializer
 
 
+class ProfileView(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    lookup_field = 'pk'
+
+
 def homePage(request):  
     return render(request, 'home-page.html', {'posts': Post.objects.all()})
+
+
+def apiHelp(request):
+    return render(request, 'api-help.html')

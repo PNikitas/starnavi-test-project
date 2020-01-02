@@ -9,11 +9,16 @@ from .views import (PostListView,
                     PostLikeAPIToggle,
                     PostView,
                     UserPostListView,
+                    ProfileView,
+                    apiHelp,
 )
 
 
 router = routers.DefaultRouter()
 router.register('blog', PostView)
+
+router_profile = routers.DefaultRouter()
+router_profile.register('profile', ProfileView)
 
 urlpatterns = [
      path('', 
@@ -48,5 +53,11 @@ urlpatterns = [
           PostLikeAPIToggle.as_view(), 
           name='api-post-like'),
 
+     path('api/help/',
+           apiHelp,
+           name='api-help'),
+
      path('api/posts/', include(router.urls)),
+
+     path('api/profiles/', include(router_profile.urls)),
 ]

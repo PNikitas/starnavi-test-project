@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="post container">
+    	<h1>
+	        API
+	    </h1>
+    	<hr/>
+        How to use the API?
+        <br/><br/>
+        <span>
+            Methods:
+        </span>
+        <br/><br/>
+        <table class="tg" style="table-layout: fixed; width: 679px">
+            <colgroup>
+                <col style="width: 295px">
+                <col style="width: 403px">
+            </colgroup>
+            <tr>
+                <th class="tg-0pky">
+                    Posts:
+                </th>
+                <th class="tg-0pky">
+                </th>
+            </tr>
+            <tr>
+                <td class="tg-0pky">
+                    To receive an API of all posts, write or click:
+                </td>
+                <td class="tg-btxf">
+                    <a href="http://127.0.0.1:8000/api/posts/blog/?format=json">
+                        http://127.0.0.1:8000/api/posts/blog/?format=json
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">
+                    To receive an API of one of the posts, write:
+                    <br>
+                    * where (post_id) is an id of the specific post
+                    <br>
+                </td>
+                <td class="tg-buh4">
+                    http://127.0.0.1:8000/api/posts/blog/(post_id)/?format=json
+                </td>
+            </tr>
+        </table>
+            <table class="tg" style="table-layout: fixed; width: 698px">
+            <colgroup>
+                <col style="width: 295px">
+                <col style="width: 403px">
+            </colgroup>
+                <tr>
+                    <th class="tg-0pky">
+                        Users:
+                    </th>
+                    <th class="tg-0pky">
+                    </th>
+                </tr>
+                <tr>
+                    <td class="tg-0pky">
+                        To receive an API of all users, write or click:
+                    </td>
+                    <td class="tg-btxf">
+                        <a href="http://127.0.0.1:8000/api/profiles/profile/?format=json">
+                            http://127.0.0.1:8000/api/profiles/profile/?format=json
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">
+                        To receive an API of one of the users, write:
+                        <br>
+                        * where (user_id) is an id of the specific user
+                        <br>
+                    </td>
+                    <td class="tg-buh4">
+                        http://127.0.0.1:8000/api/profiles/profile/(user_id)/?format=json
+                    </td>
+               </tr>
+            </table>
+	    </div>
+	<br/>
+{% endblock %}

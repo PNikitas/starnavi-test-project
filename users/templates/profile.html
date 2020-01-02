@@ -31,6 +31,12 @@
           <button class='btn btn-secondary' type='submit'>
             Update
           </button>
+          <a class="btn float-right" href="http://127.0.0.1:8000/api/profiles/profile/{{ user.id }}?format=json">
+            API of {{ user.username }} user
+          </a>
+          <a class="btn float-right" href="http://127.0.0.1:8000/api/profiles/profile/?format=json">
+            API of all users
+          </a>
       </form>
     </div>
     {% for post in posts %}
@@ -40,7 +46,7 @@
     		<span class="post-authon post-date">
           By 
           <a href="{% url 'user-posts' post.author.username %}">
-    				{{ post.author }}
+    				{{ post.author }} [id {{ post.author.id }}]
     			</a>
     				 -  
     			<small>
@@ -48,7 +54,10 @@
           </small>
           <p class='float-right'>
 						 Total likes: {{ post.like.count }}
-					 </p>
+           </p>
+           <a class="float-right" href="http://127.0.0.1:8000/api/posts/blog/?format=json">
+						API of all posts &nbsp;
+					</a>
     		</span>
     		<hr/>
 	      <h1 class="find-by">

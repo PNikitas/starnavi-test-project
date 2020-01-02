@@ -52,5 +52,3 @@ def profile(request, pk):
     }
 
     return render(request, 'profile.html', context)
-
-
